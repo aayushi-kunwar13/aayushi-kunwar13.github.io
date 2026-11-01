@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Garbage collection (Java) · Prep Notebook</title><meta name="description" content="Generational GC, the main collectors, and how to reason about pauses."><meta property="og:title" content="Garbage collection (Java) · Prep Notebook"><meta property="og:description" content="Generational GC, the main collectors, and how to reason about pauses."><meta property="og:type" content="website"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><script>
+      // Respect a theme the host already set (e.g. the claude.ai viewer), else saved choice, else OS
+      if (!document.documentElement.dataset.theme) {
+        let t = null;
+        try { t = localStorage.getItem('theme'); } catch {}
+        document.documentElement.dataset.theme = t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      }
+    </script><link rel="stylesheet" href="/assets/about.BbRA6l_p.css">
+<style>.doc[data-astro-cid-fn56snhp]{max-width:76ch}.doc[data-astro-cid-fn56snhp] h2{font-size:1.1rem;margin:1.8rem 0 .6rem;padding-bottom:6px;border-bottom:1px solid var(--border)}.doc[data-astro-cid-fn56snhp] table{display:block;overflow-x:auto;border-collapse:collapse;font-size:.9rem}.doc[data-astro-cid-fn56snhp] th,.doc[data-astro-cid-fn56snhp] td{padding:6px 10px;border:1px solid var(--border);text-align:left;vertical-align:top}.doc[data-astro-cid-fn56snhp] th{background:var(--surface-2)}.pager[data-astro-cid-fn56snhp]{display:flex;justify-content:space-between;gap:16px;margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:.9rem}.pager[data-astro-cid-fn56snhp] a[data-astro-cid-fn56snhp]:last-child{text-align:right}
+</style></head> <body data-astro-cid-sckkx6r4> <header class="site-header" data-astro-cid-sckkx6r4> <div class="wrap bar" data-astro-cid-sckkx6r4> <a href="/" class="brand" data-astro-cid-sckkx6r4><span class="dot" data-astro-cid-sckkx6r4></span>Prep Notebook</a> <nav data-astro-cid-sckkx6r4> <a href="/" data-astro-cid-sckkx6r4>Home</a><details class="menu" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>Code<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/leetcode" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>LeetCode</span> <small data-astro-cid-sckkx6r4>Problems by pattern, with insights</small> </a><a href="/practice/dsa" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Interview problems</span> <small data-astro-cid-sckkx6r4>Multi-part coding questions</small> </a><a href="/practice/lld" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>LLD machine coding</span> <small data-astro-cid-sckkx6r4>Designs built in Java</small> </a> </div> </details><details class="menu" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>System Design<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/design" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>HLD</span> <small data-astro-cid-sckkx6r4>Tracker, diagrams and designs</small> </a><a href="/design/lld" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>LLD</span> <small data-astro-cid-sckkx6r4>Requirements, entities, classes</small> </a> </div> </details><details class="menu active" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>Concepts<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/concepts" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>System design concepts</span> <small data-astro-cid-sckkx6r4>The building blocks</small> </a><a href="/concepts/java" class="current" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Java fundamentals</span> <small data-astro-cid-sckkx6r4>JVM, collections, GC, concurrency</small> </a> </div> </details><details class="menu" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>Behavioral<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/behavioral" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Behavioral stories</span> <small data-astro-cid-sckkx6r4>STAR answers from my work</small> </a><a href="/interviews" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Interview experiences</span> <small data-astro-cid-sckkx6r4>Rounds, questions, outcomes</small> </a> </div> </details><a href="/log" data-astro-cid-sckkx6r4>Blog</a><a href="/resources" data-astro-cid-sckkx6r4>Resources</a><a href="/about" data-astro-cid-sckkx6r4>About</a> </nav>  <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme" data-astro-cid-sckkx6r4> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-sckkx6r4><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" data-astro-cid-sckkx6r4></path></svg> </button> </div> </header> <main class="wrap" data-astro-cid-sckkx6r4>  <article data-astro-cid-fn56snhp> <header class="page-head" data-astro-cid-fn56snhp> <p class="eyebrow" data-astro-cid-fn56snhp><a href="/concepts" data-astro-cid-fn56snhp>Concepts</a> · <a href="/concepts/java" data-astro-cid-fn56snhp>Java fundamentals</a></p> <h1 data-astro-cid-fn56snhp>Garbage collection</h1> <p data-astro-cid-fn56snhp>Generational GC, the main collectors, and how to reason about pauses.</p> </header> <div class="prose doc" data-astro-cid-fn56snhp><h2 id="what-counts-as-garbage">What counts as garbage</h2>
+<p>An object is collectable when it can’t be reached from a <strong>GC root</strong>: local variables on thread stacks, static fields, active threads and JNI references. Reachability, not reference counting, so cycles are collected fine.</p>
+<h2 id="generational-heap">Generational heap</h2>
+<p>Most objects die young, so the heap is split:</p>
+<ul>
+<li><strong>Young generation</strong>: <strong>Eden</strong> (new objects) + two <strong>Survivor</strong> spaces. A <em>minor GC</em> copies live objects from Eden to a survivor; objects that survive enough cycles are <strong>promoted</strong>.</li>
+<li><strong>Old generation</strong>: long-lived objects, collected less often (<em>major / full GC</em>).</li>
+</ul>
+<p>Copying the few survivors is cheap, which is why young collections are fast.</p>
+<h2 id="phases">Phases</h2>
+<p><strong>Mark</strong> live objects → <strong>sweep</strong> the dead → <strong>compact</strong> to remove fragmentation. A <strong>stop-the-world</strong> pause halts application threads; modern collectors do most of the marking concurrently.</p>
+<h2 id="collectors">Collectors</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Collector</th><th>Idea</th><th>Use when</th></tr></thead><tbody><tr><td>Serial</td><td>single thread</td><td>tiny heaps, one CPU</td></tr><tr><td>Parallel</td><td>many threads, stop-the-world</td><td>throughput matters more than pauses (batch)</td></tr><tr><td><strong>G1</strong> (default since Java 9)</td><td>heap in regions, collects the most garbage first, pause-time target</td><td>most services</td></tr><tr><td><strong>ZGC</strong> / Shenandoah</td><td>almost everything concurrent, pauses &#x3C; a few ms</td><td>large heaps, latency-sensitive</td></tr></tbody></table>
+<h2 id="reasoning-about-gc-in-production">Reasoning about GC in production</h2>
+<ul>
+<li>Frequent full GCs or growing old gen after each GC → likely a <strong>memory leak</strong> (e.g. an unbounded cache, listeners never removed).</li>
+<li>Tune by sizing the heap (<code>-Xms</code>/<code>-Xmx</code>) and setting a pause goal (<code>-XX:MaxGCPauseMillis</code>) before touching anything else.</li>
+<li>Read GC logs (<code>-Xlog:gc*</code>) and watch allocation rate; allocating less is the best tuning.</li>
+</ul>
+<h2 id="reference-types">Reference types</h2>
+<p><code>Strong</code> (normal) · <code>Soft</code> (cleared under memory pressure, for caches) · <code>Weak</code> (cleared at next GC, <code>WeakHashMap</code>) · <code>Phantom</code> (cleanup after finalisation).</p></div> </article> <nav class="pager" data-astro-cid-fn56snhp> <a href="/concepts/java/collections" data-astro-cid-fn56snhp>← Collections</a> <a href="/concepts/java/concurrency" data-astro-cid-fn56snhp>Concurrency →</a> </nav>  </main> <footer class="wrap site-footer" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Built while learning · 2026</span> <span class="mono" data-astro-cid-sckkx6r4>last updated 2026-11-01</span> </footer> <script>
+      const menus = [...document.querySelectorAll('.site-header details.menu')];
+      menus.forEach((m) => m.addEventListener('toggle', () => { if (m.open) menus.forEach((o) => o !== m && (o.open = false)); }));
+      document.addEventListener('click', (e) => menus.forEach((m) => !m.contains(e.target) && (m.open = false)));
+      document.addEventListener('keydown', (e) => e.key === 'Escape' && menus.forEach((m) => (m.open = false)));
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch {}
+      });
+    </script> </body> </html>  

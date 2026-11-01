@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Inventory Management System · Prep Notebook</title><meta name="description" content="We have a multi warehouse system which contains multiple product with its stock · Find product with a specific qty in warehouse with most stock for reservation…"><meta property="og:title" content="Inventory Management System · Prep Notebook"><meta property="og:description" content="We have a multi warehouse system which contains multiple product with its stock · Find product with a specific qty in warehouse with most stock for reservation…"><meta property="og:type" content="website"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><script>
+      // Respect a theme the host already set (e.g. the claude.ai viewer), else saved choice, else OS
+      if (!document.documentElement.dataset.theme) {
+        let t = null;
+        try { t = localStorage.getItem('theme'); } catch {}
+        document.documentElement.dataset.theme = t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      }
+    </script><link rel="stylesheet" href="/assets/about.BbRA6l_p.css">
+<style>.doc[data-astro-cid-l3xzdd7a]{max-width:76ch}.doc[data-astro-cid-l3xzdd7a] h3{font-size:1.05rem;margin:1.8rem 0 .6rem;padding-bottom:6px;border-bottom:1px solid var(--border)}.doc[data-astro-cid-l3xzdd7a] ol,.doc[data-astro-cid-l3xzdd7a] ul{padding-left:1.4rem}.drawing[data-astro-cid-l3xzdd7a]{display:block;padding:0;overflow:hidden;margin-bottom:28px;color:var(--text);transition:border-color .15s}.drawing[data-astro-cid-l3xzdd7a]:hover{text-decoration:none;border-color:var(--accent)}.drawing[data-astro-cid-l3xzdd7a] .thumb[data-astro-cid-l3xzdd7a]{display:block;background:#fff;border-bottom:1px solid var(--border)}.drawing[data-astro-cid-l3xzdd7a] img[data-astro-cid-l3xzdd7a]{display:block;width:100%;height:auto}.drawing[data-astro-cid-l3xzdd7a] .cap[data-astro-cid-l3xzdd7a]{display:block;padding:10px 16px;font-size:.88rem;font-weight:600}.pager[data-astro-cid-l3xzdd7a]{display:flex;justify-content:space-between;gap:16px;margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:.9rem}.pager[data-astro-cid-l3xzdd7a] a[data-astro-cid-l3xzdd7a]:last-child{text-align:right}
+</style></head> <body data-astro-cid-sckkx6r4> <header class="site-header" data-astro-cid-sckkx6r4> <div class="wrap bar" data-astro-cid-sckkx6r4> <a href="/" class="brand" data-astro-cid-sckkx6r4><span class="dot" data-astro-cid-sckkx6r4></span>Prep Notebook</a> <nav data-astro-cid-sckkx6r4> <a href="/" data-astro-cid-sckkx6r4>Home</a><details class="menu" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>Code<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/leetcode" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>LeetCode</span> <small data-astro-cid-sckkx6r4>Problems by pattern, with insights</small> </a><a href="/practice/dsa" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Interview problems</span> <small data-astro-cid-sckkx6r4>Multi-part coding questions</small> </a><a href="/practice/lld" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>LLD machine coding</span> <small data-astro-cid-sckkx6r4>Designs built in Java</small> </a> </div> </details><details class="menu active" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>System Design<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/design" class="current" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>HLD</span> <small data-astro-cid-sckkx6r4>Tracker, diagrams and designs</small> </a><a href="/design/lld" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>LLD</span> <small data-astro-cid-sckkx6r4>Requirements, entities, classes</small> </a> </div> </details><details class="menu" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>Concepts<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/concepts" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>System design concepts</span> <small data-astro-cid-sckkx6r4>The building blocks</small> </a><a href="/concepts/java" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Java fundamentals</span> <small data-astro-cid-sckkx6r4>JVM, collections, GC, concurrency</small> </a> </div> </details><details class="menu" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>Behavioral<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/behavioral" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Behavioral stories</span> <small data-astro-cid-sckkx6r4>STAR answers from my work</small> </a><a href="/interviews" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Interview experiences</span> <small data-astro-cid-sckkx6r4>Rounds, questions, outcomes</small> </a> </div> </details><a href="/log" data-astro-cid-sckkx6r4>Blog</a><a href="/resources" data-astro-cid-sckkx6r4>Resources</a><a href="/about" data-astro-cid-sckkx6r4>About</a> </nav>  <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme" data-astro-cid-sckkx6r4> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-sckkx6r4><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" data-astro-cid-sckkx6r4></path></svg> </button> </div> </header> <main class="wrap" data-astro-cid-sckkx6r4>  <article data-astro-cid-l3xzdd7a> <header class="page-head" data-astro-cid-l3xzdd7a> <p class="eyebrow" data-astro-cid-l3xzdd7a><a href="/design/lld" data-astro-cid-l3xzdd7a>System design</a> · LLD design</p> <h1 data-astro-cid-l3xzdd7a>Inventory Management System</h1> </header>  <div class="prose doc" data-astro-cid-l3xzdd7a><h3 id="fr">FR</h3>
+<p>1. We have a multi warehouse system which contains multiple product with its stock<br>
+2. Find product with a specific qty in warehouse with most stock for reservation and if not available then return a message “product not available”<br>
+3. Reserved order can be fulfilled or cancelled<br>
+4. remove from reserved state if no action happen within 15mins<br>
+4. Restock the product with specific qty to a specific warehouse<br>
+5. Trigger a notification if a product stock is less than threshold (keep threshold as configurable per product)</p>
+<h3 id="nfr">NFR</h3>
+<p>1.Scalable (data grow): system should handle addition of more warehouse/product<br>
+2. Extensible: find product logic should be swappable with other logic<br>
+3. Concurrency: Handle concurrent request for reservation of product coming from two different threads , also to handle concurrency between reservation vs reservation and restocking vs reservation<br>
+4.Scalable(expiry mechanism ): Expiry detection should be scale efficiently as active reservation grows</p>
+<h3 id="entities-and-classes">Entities and classes</h3>
+<p>Status: enum<br>
+RESERVED , FREE , SOLD, CANCELLED</p>
+<p>Product:<br>
+-productId : int<br>
+-productName : String<br>
+-quantity : int<br>
+-quantityThreshold : int<br>
+-warehouseID : int</p>
+<p>+Product(workflowID , productname , quantity)<br>
++addProduct(quantity) : Product - synchronized<br>
++removeProduct(quantity) - synchronized</p>
+<p>Warehouse:<br>
+-warehouseId : int<br>
+-Map&#x3C;Integer, Product> products</p>
+<p>+addProduct(productName, qty)<br>
+Find product in list and if not present add a new product</p>
+<p>+getProduct(workflowId)</p>
+<p>Booking:<br>
+-reservationID : int<br>
+-status: Status<br>
+-expiryTime:  epochTime<br>
+-productId: int<br>
+-qty : int<br>
+-warehouseId : int</p>
+<p>+reserveOrder(productId, qty, warehouseID)<br>
+Create Booking with status RESERVED<br>
+Set expiryTime<br>
+removeProduct(qty)</p>
+<p>+cancelOrder() - need this to be synchronized as order can actually be cancelled or can be cancelled due to expiry time<br>
+status change to CANCELLED<br>
+call addProduct(qty)</p>
+<p>+confirmOrder() -need this to be synchronized<br>
+Status change to SOLD</p>
+<p>+expiryTimeHandler()  : Boolean<br>
+- now > expiryTime  call cancelOrder()</p>
+<p>ProductFindStrategy - interface<br>
+WarehouseWithMostStockStrategy - implements ProductFindStrategy : warehouse<br>
+- in this if nothing found send a message “No Product available”</p>
+<p>InventoryManagementSystem<br>
+- strategy : WarehouseWithMostStockStrategy<br>
+-ConcurrentHashMap&#x3C;String, Booking> activeReservedOrders<br>
+-List&#x3C;Warehouse> warehouse</p>
+<p>+reserveOrder(productid, qty)<br>
+optional&#x3C;Warehouse> find using strategy and when found reserveOrder()<br>
+Add in activeReservedOrders</p>
+<p>+bookOrder(reservationID)<br>
+Remove from activeReservedOrders<br>
+confirmOrder()<br>
++cancelOrder()<br>
+Remove from activeReservedOrders</p>
+<p>+checkExceedReservedOrders()<br>
+if true remove from activeReservedOrders</p>
+<p>+restockOrder(wareshouseId, productname , qty)<br>
+First warehouse.get(warehouseid)  : Optional&#x3C;Product> p</p>
+<p>+addWarehouse()</p>
+<p>+addNewProduct(warehouseId ,  productname , qty )<br>
+warehouse.addProduct()</p></div> </article> <nav class="pager" data-astro-cid-l3xzdd7a> <a href="/design/doc/elevator-system" data-astro-cid-l3xzdd7a>← Elevator System</a> <a href="/design/doc/food-delivery" data-astro-cid-l3xzdd7a>Food Delivery System →</a> </nav>  </main> <footer class="wrap site-footer" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Built while learning · 2026</span> <span class="mono" data-astro-cid-sckkx6r4>last updated 2026-11-01</span> </footer> <script>
+      const menus = [...document.querySelectorAll('.site-header details.menu')];
+      menus.forEach((m) => m.addEventListener('toggle', () => { if (m.open) menus.forEach((o) => o !== m && (o.open = false)); }));
+      document.addEventListener('click', (e) => menus.forEach((m) => !m.contains(e.target) && (m.open = false)));
+      document.addEventListener('keydown', (e) => e.key === 'Escape' && menus.forEach((m) => (m.open = false)));
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch {}
+      });
+    </script> </body> </html>  

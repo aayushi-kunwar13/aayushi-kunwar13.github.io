@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Elevator System · Prep Notebook</title><meta name="description" content="N floors and m elevators , with a max occupancy count of 8 people · two types of call : Hall Call  -> provides a direction as input can be up or down"><meta property="og:title" content="Elevator System · Prep Notebook"><meta property="og:description" content="N floors and m elevators , with a max occupancy count of 8 people · two types of call : Hall Call  -> provides a direction as input can be up or down"><meta property="og:type" content="website"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><script>
+      // Respect a theme the host already set (e.g. the claude.ai viewer), else saved choice, else OS
+      if (!document.documentElement.dataset.theme) {
+        let t = null;
+        try { t = localStorage.getItem('theme'); } catch {}
+        document.documentElement.dataset.theme = t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      }
+    </script><link rel="stylesheet" href="/assets/about.BbRA6l_p.css">
+<style>.doc[data-astro-cid-l3xzdd7a]{max-width:76ch}.doc[data-astro-cid-l3xzdd7a] h3{font-size:1.05rem;margin:1.8rem 0 .6rem;padding-bottom:6px;border-bottom:1px solid var(--border)}.doc[data-astro-cid-l3xzdd7a] ol,.doc[data-astro-cid-l3xzdd7a] ul{padding-left:1.4rem}.drawing[data-astro-cid-l3xzdd7a]{display:block;padding:0;overflow:hidden;margin-bottom:28px;color:var(--text);transition:border-color .15s}.drawing[data-astro-cid-l3xzdd7a]:hover{text-decoration:none;border-color:var(--accent)}.drawing[data-astro-cid-l3xzdd7a] .thumb[data-astro-cid-l3xzdd7a]{display:block;background:#fff;border-bottom:1px solid var(--border)}.drawing[data-astro-cid-l3xzdd7a] img[data-astro-cid-l3xzdd7a]{display:block;width:100%;height:auto}.drawing[data-astro-cid-l3xzdd7a] .cap[data-astro-cid-l3xzdd7a]{display:block;padding:10px 16px;font-size:.88rem;font-weight:600}.pager[data-astro-cid-l3xzdd7a]{display:flex;justify-content:space-between;gap:16px;margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:.9rem}.pager[data-astro-cid-l3xzdd7a] a[data-astro-cid-l3xzdd7a]:last-child{text-align:right}
+</style></head> <body data-astro-cid-sckkx6r4> <header class="site-header" data-astro-cid-sckkx6r4> <div class="wrap bar" data-astro-cid-sckkx6r4> <a href="/" class="brand" data-astro-cid-sckkx6r4><span class="dot" data-astro-cid-sckkx6r4></span>Prep Notebook</a> <nav data-astro-cid-sckkx6r4> <a href="/" data-astro-cid-sckkx6r4>Home</a><details class="menu" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>Code<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/leetcode" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>LeetCode</span> <small data-astro-cid-sckkx6r4>Problems by pattern, with insights</small> </a><a href="/practice/dsa" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Interview problems</span> <small data-astro-cid-sckkx6r4>Multi-part coding questions</small> </a><a href="/practice/lld" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>LLD machine coding</span> <small data-astro-cid-sckkx6r4>Designs built in Java</small> </a> </div> </details><details class="menu active" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>System Design<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/design" class="current" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>HLD</span> <small data-astro-cid-sckkx6r4>Tracker, diagrams and designs</small> </a><a href="/design/lld" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>LLD</span> <small data-astro-cid-sckkx6r4>Requirements, entities, classes</small> </a> </div> </details><details class="menu" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>Concepts<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/concepts" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>System design concepts</span> <small data-astro-cid-sckkx6r4>The building blocks</small> </a><a href="/concepts/java" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Java fundamentals</span> <small data-astro-cid-sckkx6r4>JVM, collections, GC, concurrency</small> </a> </div> </details><details class="menu" data-astro-cid-sckkx6r4> <summary data-astro-cid-sckkx6r4>Behavioral<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" data-astro-cid-sckkx6r4><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" data-astro-cid-sckkx6r4></path></svg></summary> <div class="menu-list" data-astro-cid-sckkx6r4> <a href="/behavioral" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Behavioral stories</span> <small data-astro-cid-sckkx6r4>STAR answers from my work</small> </a><a href="/interviews" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Interview experiences</span> <small data-astro-cid-sckkx6r4>Rounds, questions, outcomes</small> </a> </div> </details><a href="/log" data-astro-cid-sckkx6r4>Blog</a><a href="/resources" data-astro-cid-sckkx6r4>Resources</a><a href="/about" data-astro-cid-sckkx6r4>About</a> </nav>  <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme" data-astro-cid-sckkx6r4> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-sckkx6r4><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" data-astro-cid-sckkx6r4></path></svg> </button> </div> </header> <main class="wrap" data-astro-cid-sckkx6r4>  <article data-astro-cid-l3xzdd7a> <header class="page-head" data-astro-cid-l3xzdd7a> <p class="eyebrow" data-astro-cid-l3xzdd7a><a href="/design/lld" data-astro-cid-l3xzdd7a>System design</a> · LLD design</p> <h1 data-astro-cid-l3xzdd7a>Elevator System</h1> </header>  <div class="prose doc" data-astro-cid-l3xzdd7a><p>**</p>
+<h3 id="fr">FR</h3>
+<p>1.N floors and m elevators , with a max occupancy count of 8 people<br>
+2.two types of call : Hall Call  -> provides a direction as input can be up or down<br>
+CabinCall -> provides a targeted floor on which it wants to go<br>
+<a href="http://3.on">3.</a> On a hall call - assign elevator base on priority logic , nearest elevator moving in same direction and if nothing then idle elevator<br>
+4. On a emergeny call - emergency mode - elevator can be sent for priority use, and ignore the current queue<br>
+<a href="http://5.if">5.If</a> any elevator out-of-serivce don’t assign any request to this one<br>
+6. On a cabin call - add the request for the specific elevator and when reached remove the request<br>
+7. If no Available elevator add this to a queue and assign to elevator when free</p>
+<p>Non FR<br>
+1.Extensible: to add swappable logic to assign elevator<br>
+2.Scalable: to handle addition of elevators and floors in current system<br>
+3.Concurrency: handle concurrent requests, both across different elevators (avoid duplicate assignment) and within a single elevator<br>
+4. No starvation : request that is technically valid and pending, but never gets serviced because the system’s decision rule keeps favoring other requests over it.</p>
+<h3 id="entities-and-classes">Entities and classes</h3>
+<p>RequestSource:  ENUM<br>
+External , Internal , Emergency</p>
+<p>Direction: UP, DOWN , IDLE</p>
+<p>Request:<br>
++direction : Direction<br>
++targetFloor: int<br>
++source TargetSource</p>
+<p>Eg: ExternalCall Request (UP, 5, EXTERNAL) - in this user is at 5th floor and requested for UP direct<br>
+EmergencyCall Request (UP, 5, EMERGENCY) - in this user is at 5th floor and requested for UP direct</p>
+<p>InternalCall Request (IDLE, 5, INTERNAL) - this mean user is inside the cabin and wants to go on 5th floor</p>
+<p>Runnable interface<br>
++run()</p>
+<p>Elevator:  implement runnable<br>
+-elevatorID : Int<br>
+-capacity : int<br>
+-currentFloor : AtomicInteger<br>
+-state: ElevatorState<br>
+-isRunning : boolean<br>
+-upRequests TreeSet&#x3C;Integer><br>
+-downRequest TreeSet&#x3C;Integer><br>
++addRequest(request)<br>
++move()<br>
++run()  -checks isRunning then call move()</p>
+<p>ElevatorState: interface<br>
++move()<br>
++addRequest(elevator, request)<br>
+: increase the capacity<br>
++getDirection()<br>
++forceRequest(elevator, request)<br>
+: handle request with emergency in this to remove up and down request for this elevator</p>
+<p>IdleState: implements Elevatorstate<br>
++move()<br>
++addRequest()<br>
++forceRequest(elevator, request)<br>
++getDirection()</p>
+<p>MovingUpState: implements Elevatorstate<br>
++move()<br>
++addRequest()<br>
++forceRequest(elevator, request)<br>
++getDirection()</p>
+<p>MovingDownState: implements Elevatorstate<br>
++move()<br>
++addRequest()<br>
++forceRequest(elevator, request)<br>
++getDirection()</p>
+<p>SelectionType - ENUM<br>
+-NORMAL, EMERGENCY</p>
+<p>ElevatorSelectionStrategy - interface<br>
++selectElevator(elevators, request)</p>
+<p>NearestElevatorStrategy - implements ElevatorSelectionStrategy</p>
+<p>EmergencyElevatorStrategy- implements ElevatorSelectionStrategy<br>
+- in this assign any elevator</p>
+<p>ElevatorSelectionFactory<br>
+- elevatorSelectionStrategyRequest - based on SelectionType initialize selection strategy</p>
+<p>ElevatorSystem - SINGELTON<br>
+-instance ElevatoSystem<br>
+-elevators Map&#x3C;Integer, Elevator><br>
+-selectionStrategy ElevatorSelectionFactory  : Map&#x3C;Enum, ElevatorSelectionStrategy></p>
+<p>+getInstance(numElevtors) : ElevatorSystem</p>
+<p>+requestElevator(floor, direct)  - for external call<br>
+Create a request - for external call<br>
+Select elevator using selectionStrategy.get(NORMAL)<br>
+If elevator present add in addrequest() for elevator</p>
+<p>+selectFloor(elevatorId, floor)<br>
+Create a request - for internal call<br>
+If elevator present add in addrequest() for elevator</p>
+<p>+emergencyRequestElevator(foor, direction)<br>
+Create a request - for external call<br>
+Select elevator using selectionStrategy.get(EMERGENCY)<br>
+If elevator present add in forceRequest()</p></div> </article> <nav class="pager" data-astro-cid-l3xzdd7a> <a href="/design/doc/amazon-locker" data-astro-cid-l3xzdd7a>← Amazon Locker System</a> <a href="/design/doc/inventory-management" data-astro-cid-l3xzdd7a>Inventory Management System →</a> </nav>  </main> <footer class="wrap site-footer" data-astro-cid-sckkx6r4> <span data-astro-cid-sckkx6r4>Built while learning · 2026</span> <span class="mono" data-astro-cid-sckkx6r4>last updated 2026-11-01</span> </footer> <script>
+      const menus = [...document.querySelectorAll('.site-header details.menu')];
+      menus.forEach((m) => m.addEventListener('toggle', () => { if (m.open) menus.forEach((o) => o !== m && (o.open = false)); }));
+      document.addEventListener('click', (e) => menus.forEach((m) => !m.contains(e.target) && (m.open = false)));
+      document.addEventListener('keydown', (e) => e.key === 'Escape' && menus.forEach((m) => (m.open = false)));
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch {}
+      });
+    </script> </body> </html>  
